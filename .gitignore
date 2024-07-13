@@ -1,0 +1,6 @@
+*.d
+*.o
+
+.cache/*
+
+compile_commands.json
