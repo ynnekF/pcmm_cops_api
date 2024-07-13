@@ -82,43 +82,29 @@ bool cops_opcode_ok(uint8_t opcode);
 bool cops_class_ok(uint8_t cnum, uint8_t ctype);
 
 /*
- * COPS Object Handle: C-Num = 1 , C-Type = 1, Client Handle
+ * Pack the destination buffer with a COPS Handle object (C-NUm = 1, C-Type = 1)
  *
- * The handle object encapsulates a unique value that identifies an installed
- * state. This ID is used by most COPS operations. C-Num   =   1 C-Type  =   1,
- * Client Handle.
- *
- * The client handle is used to refer to a request state initiated by a
- * particular PEP and installed at the PDP for a client-type. A PEP will
- * specify a client handle in its Request messages, Report messages and Delete
- * messages sent to the PDP. In all cases, the client handle is used to
- * uniquely identify a particular PEP's request for a client-type.
- *
- * The PEP establishes a request state client handle for which the remote PDP
- * may maintain state. The remote PDP then uses this handle to refer to the
- * exchanged information and decisions communicated over the TCP connection
- * to a particular PEP for a given client-type. Once a stateful handle is
- * established for a new request, any subsequent modifications of the request
- * can be made using the REQ message specifying the previously installed handle.
+ * @dst         Destination buffer
+ * @handle      PEP specified client handle
  */
 void cops_handle(uint8_t* dst, const char* handle);
 
 /*
- * COPS Object Context: C-Num = 2, C-Type = 1
+ * Pack the destination buffer with a COPS Context object (C-Num = 2, C-Type = 1)
  *
  * R-Type (Request Type Flag):
  *      0x01 = Incoming-Message/Admission Control request
  *      0x02 = Resource-Allocation request
  *      0x04 = Outgoing-Message request
  *      0x08 = Configuration request
- *
  * M-Type (Message Type):
  *      Client Specific 16 bit values of protocol message types
- *
  *              0              1             2              3
  *      +--------------+--------------+--------------+--------------+
  *      |            R-Type           |            M-Type           |
  *      +--------------+--------------+--------------+--------------+
+ *
+ * @dst         Destination buffer
  */
 void cops_context(uint8_t* dst);
 
@@ -148,6 +134,8 @@ void cops_context(uint8_t* dst);
  *  associated client handle and one or more decision objects grouped
  *  relative to a Context object and Decision Flags object type pair. If
  *  there was a protocol error an error object is returned instead.
+ *
+ * @dst         Destination buffer
  */
 void cops_decision(uint8_t* dst);
 
