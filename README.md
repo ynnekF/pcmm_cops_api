@@ -100,7 +100,7 @@ The PDP responds to the REQ with a DEC message that includes the associated clie
 grouped relative to a Context object and Decision Flags object type pair. If there was a protocol error an error object is returned
 instead.
 
-### Client-Accept `cops_decision`
+### Client-Accept `cops_client_accept`
 tbd
 
 ### Keep-Alive `cops_keepalive`

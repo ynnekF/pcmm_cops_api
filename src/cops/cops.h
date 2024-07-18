@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <arpa/inet.h>
+
 #define COPS_COMMON_OBJ_LEN 8
 
 bool cops_header_ok(uint8_t opcode, uint16_t client_type, uint32_t message_len);
